@@ -31,6 +31,7 @@ def measure_distance():
 
 
 def forward():
+    print('forward')
     motor1a.high()
     motor1b.low()
     motor2a.high()
@@ -38,6 +39,7 @@ def forward():
 
 
 def backward():
+    print('backward')
     motor1a.low()
     motor1b.high()
     motor2a.low()
@@ -45,6 +47,7 @@ def backward():
 
 
 def left():
+    print('left')
     motor1a.high()
     motor1b.low()
     motor2a.low()
@@ -52,6 +55,7 @@ def left():
 
 
 def right():
+    print('right')
     motor1a.low()
     motor1b.high()
     motor2a.high()
@@ -59,16 +63,27 @@ def right():
 
 
 def stop():
+    print('stop')
     # на все 4 боковых контактных зажима перестаем подавать ток
     motor1a.low()
     motor1b.low()
     motor2a.low()
     motor2b.low()
+    
 
+def test():
+    stop()
+    forward()
+    utime.sleep(5)
+    backward()
+    utime.sleep(5)
+    stop()
+    
+test()
 
 while True:
     stop()
-    n_measures = 100
+    n_measures = 10
     distance = 0.0
     for i in range(n_measures):
         distance += measure_distance()
@@ -83,6 +98,5 @@ while True:
         right()
         utime.sleep(1)
         continue
-    stop()
     forward()
-    utime.sleep(1)
+    utime.sleep(2)
