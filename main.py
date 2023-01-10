@@ -13,6 +13,8 @@ motor2b = Pin(16, Pin.OUT)
 
 
 def measure_distance():
+    """Функция измерения дистанции"""
+
     # отключаем датчик расстояния
     trigger.low()
 
